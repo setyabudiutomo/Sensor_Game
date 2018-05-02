@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MoveSceneUtama : MonoBehaviour {
+public class LoadScene : MonoBehaviour {
+
     private bool loadScene = false;
-    private bool klikaktive = false;
 
     [SerializeField]
     private int scene;
@@ -14,16 +13,14 @@ public class MoveSceneUtama : MonoBehaviour {
     [SerializeField]
     private Text loadingText;
 
-    public void OnClickButton() 
+    // Updates once per frame
+    void Update()
     {
-        //SceneManager.LoadScene("Game1");
-        klikaktive = true;
-    }
 
-    void Update() 
-    {
-        if(klikaktive == true)
+        // If the player has pressed the space bar and a new scene is not loading yet...
+        if (Input.GetKeyUp(KeyCode.Space) && loadScene == false)
         {
+
             // ...set the loadScene boolean to true to prevent loading a new scene more than once...
             loadScene = true;
 
@@ -32,15 +29,20 @@ public class MoveSceneUtama : MonoBehaviour {
 
             // ...and start a coroutine that will load the desired scene.
             StartCoroutine(LoadNewScene());
+
         }
-        
+
         // If the new scene has started loading...
         if (loadScene == true)
         {
+
             // ...then pulse the transparency of the loading text to let the player know that the computer is still working.
             loadingText.color = new Color(loadingText.color.r, loadingText.color.g, loadingText.color.b, Mathf.PingPong(Time.time, 1));
+
         }
+
     }
+
 
     // The coroutine runs on its own at the same time as Update() and takes an integer indicating which scene to load.
     IEnumerator LoadNewScene()
@@ -60,4 +62,6 @@ public class MoveSceneUtama : MonoBehaviour {
         }
 
     }
+
+
 }
