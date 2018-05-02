@@ -16,7 +16,7 @@ public class Ball : MonoBehaviour {
 
     void MoveScene() 
     {
-        if (Data.box == 0) 
+        if (Data.box == 4) 
         {
             SceneManager.LoadScene("Coba");
         }
