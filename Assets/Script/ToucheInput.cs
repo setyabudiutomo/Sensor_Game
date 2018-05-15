@@ -26,6 +26,6 @@ public class ToucheInput : MonoBehaviour
 
     void MoveScene()
     {
-        SceneManager.LoadScene("Cobalagi");
+        SceneManager.LoadScene("Game_3");
     }
 }

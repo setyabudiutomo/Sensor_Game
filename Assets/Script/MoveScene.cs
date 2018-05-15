@@ -6,6 +6,6 @@ using UnityEngine.SceneManagement;
 public class MoveScene : MonoBehaviour {
     public void LoadScene() 
     {
-        SceneManager.LoadScene("Coba");
+        SceneManager.LoadScene("Game_2");
     }
 }
